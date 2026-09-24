@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Default brand (Atelier) — overridden at runtime by the theme switcher */
+  --ink: 12 12 13;
+  --ink-800: 22 22 24;
+  --ink-700: 31 31 34;
+  --bone: 246 244 239;
+  --sand: 233 228 218;
+  --stone-400: 168 161 150;
+  --stone-500: 138 131 120;
+  --stone-600: 107 101 92;
+  --accent: 154 133 104;
+  --accent-light: 185 165 133;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --demobar-h: 52px;
+}
+
+@layer base {
+  /* Smooth crossfade of brand colors when the theme switches.
+     Element-specific Tailwind transitions (utilities layer) override this. */
+  * {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-duration: 0.6s;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    @apply bg-bone text-ink font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-ink text-bone;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 1.1s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  .theme-fade {
+    transition: background-color 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      color 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--sand));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--stone-400));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--stone-500));
+}
