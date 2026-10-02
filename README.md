@@ -277,3 +277,7 @@ This is a fully static SPA — deploy the `dist/` folder to any static host:
 ## License
 
 No license has been specified for this project yet. All rights reserved by default — add a `LICENSE` file if you intend to open-source it.
+
+---
+
+**Built by Girish Lade** — https://ladestack.in
