@@ -21,3 +21,7 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# local build outputs (not pushed; built files go to repo root for Pages)
+/dist/
+/node_modules/
